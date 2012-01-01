@@ -54,6 +54,11 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 		public function __construct(){
 			add_filter( 'login_message', array( &$this, 'list_users' ), 10, 1 );
 			add_action( 'login_init', array( &$this, 'catch_login' ) );
+			add_action( 'login_head', array( &$this, 'enqueue_style' ) );
+		}
+		
+		public function enqueue_style(){
+			echo '<link rel="stylesheet" type="text/css" href="' . plugins_url( basename( dirname( __FILE__ ) ) ) . '/quicklogin.css' . '" />';
 		}
 		
 		/**
@@ -65,9 +70,9 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 		 */
 		public function get_users_for_login(){
 			$this->users_for_login = array(
-				'&User_1' => '&plkoji19>',
-				'!User_2' => '!hugzft28<',
-				'>User_3' => '*37rdeswa&',
+				'User_1' => '&plkoji19>',
+				'User_2' => '!hugzft28<',
+				'User_3' => '*37rdeswa&',
 			);
 			
 			return apply_filters( 'quicklogin_users_array', $this->users_for_login );
@@ -88,6 +93,8 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 				
 			$inner = '';
 			foreach( $this->users_for_login as $user => $pwd ){
+				$user_data = get_userdata( $user );
+				
 				$data = new stdClass();
 				
 				$data->url  = site_url( 'wp-login.php' );
@@ -110,7 +117,8 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 		 * @return string
 		 */
 		protected function create_list( $inner = '' ){
-			$out_format = apply_filters( 'quicklogin_create_list_format', '<div class="message"><h3>QuickLogin</h3><ul>%s</ul></div>' );
+			$format = '<div id="quicklogin"><h3>QuickLogin</h3><ul>%s</ul></div>';
+			$out_format = apply_filters( 'quicklogin_create_list_format', $format );
 			return sprintf( $out_format, $inner );			
 		}
 		
@@ -125,7 +133,7 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 			if(	NULL === $data )
 				return '<li>No data present.</li>';
 				
-			$out_format = apply_filters( 'quick_login_outputformat', '<li><a href="%1$s?username=%2$s&amp;pwd=%3$s">%4$s</a></li>' );
+			$out_format = apply_filters( 'quick_login_outputformat', '<li><a class="ql_button play" href="%1$s?username=%2$s&amp;pwd=%3$s">%4$s</a></li>' );
 			return sprintf( $out_format, $data->url, $data->user, $data->pwd, $data->name );
 		}
 		
