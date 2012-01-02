@@ -2,7 +2,7 @@
 /*
 Plugin Name: Quick Login
 Description: Provides a easy login for development
-Version: 0.1.0
+Version: 0.1.1
 Author: Ralf Albert
 Author URI: http://yoda.neun12.de
 License: GPL
@@ -16,6 +16,13 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 
 	class QuickLoginForDev
 	{
+		/**
+		 * 
+		 * Showing the role beneath the username
+		 * @var bool
+		 */
+		const SHOW_ROLES = TRUE;
+		
 		/**
 		 * 
 		 * Flag. Set to true if plugin was started
@@ -54,10 +61,18 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 		public function __construct(){
 			add_filter( 'login_message', array( &$this, 'list_users' ), 10, 1 );
 			add_action( 'login_init', array( &$this, 'catch_login' ) );
-			add_action( 'login_head', array( &$this, 'enqueue_style' ) );
+			add_action( 'login_head', array( &$this, 'print_style' ) );
 		}
 		
-		public function enqueue_style(){
+		
+		/**
+		 * 
+		 * Print style outputs a link to the stylesheet in the head of the document
+		 * @since 0.1.1
+		 * @param none
+		 * @return void
+		 */
+		public function print_style(){
 			echo '<link rel="stylesheet" type="text/css" href="' . plugins_url( basename( dirname( __FILE__ ) ) ) . '/quicklogin.css' . '" />';
 		}
 		
@@ -93,10 +108,14 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 				
 			$inner = '';
 			foreach( $this->users_for_login as $user => $pwd ){
-				$user_data = get_userdata( $user );
+
+				if( self::SHOW_ROLES ){
+					$user_data = get_user_by( 'login', $user );
+					$role = $user_data->roles[0];
+					$user = sprintf( '%s (%s)', $user, $role );
+				} 
 				
 				$data = new stdClass();
-				
 				$data->url  = site_url( 'wp-login.php' );
 				$data->user = urlencode( $user );
 				$data->pwd  = urlencode( $pwd );
@@ -106,7 +125,8 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 			}
 
 			$outer = $this->create_list( $inner );
-			return apply_filters( 'quicklogin_list_users', $outer ) . $message;
+			
+			return $outer . $message;
 		}
 		
 		/**
@@ -117,8 +137,8 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 		 * @return string
 		 */
 		protected function create_list( $inner = '' ){
-			$format = '<div id="quicklogin"><h3>QuickLogin</h3><ul>%s</ul></div>';
-			$out_format = apply_filters( 'quicklogin_create_list_format', $format );
+			$out_format = '<div id="quicklogin"><h3>QuickLogin</h3><ul>%s</ul></div>';
+			
 			return sprintf( $out_format, $inner );			
 		}
 		
@@ -133,7 +153,8 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 			if(	NULL === $data )
 				return '<li>No data present.</li>';
 				
-			$out_format = apply_filters( 'quick_login_outputformat', '<li><a class="ql_button play" href="%1$s?username=%2$s&amp;pwd=%3$s">%4$s</a></li>' );
+			$out_format = '<li><a class="ql_button play" href="%1$s?username=%2$s&amp;pwd=%3$s">%4$s</a></li>';
+			
 			return sprintf( $out_format, $data->url, $data->user, $data->pwd, $data->name );
 		}
 		
@@ -164,4 +185,4 @@ if( ! class_exists( 'QuickLoginForDev' ) ){
 
 	} // .end class QuickLogin
 
-} //.end if-class-exists
+} // .end if-class-exists
