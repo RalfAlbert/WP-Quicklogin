@@ -2,6 +2,7 @@ WordPress Quicklogin
 ====================
 
 Ermoeglicht den schnellen Wechsel zwischen verschiedenen Benutzern.
+
 NUR ZUR ENTWICKELUJNG GEEIGNET! NICHT IM PRODUKTIVUMFELD EINSETZEN!
 
 Das Plugin ermöglicht es im Login-Screen sich mit nur einem Klick unter verschiedenen Benutzernamen (bzw. Benutzer-Profilen) anzumelden.
