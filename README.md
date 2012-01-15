@@ -23,8 +23,6 @@ v0.1.1
 
 v0.1.2
 
-- Vereinfachter Pluginstart
-
-- verbessertes Stylesheet (mit Farbverlauf, huuuiiiii!!)
-
-- Fehler bei der Ausgabe von Benutzer- und Loginnamen beseitigt
+-	Vereinfachter Pluginstart
+-	verbessertes Stylesheet (mit Farbverlauf, huuuiiiii!!)
+-	Fehler bei der Ausgabe von Benutzer- und Loginnamen beseitigt
