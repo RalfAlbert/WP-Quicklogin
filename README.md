@@ -20,6 +20,7 @@ Erste Version
 v0.1.1
 - Bessere Darstellung durch eigens Stylesheet
 - Benutzer-Rollen werden neben den Benutzernamen ausgegeben (optional)
+- Benutzer-Rollen werden neben den Benutzernamen ausgegeben (optional)
 
 v0.1.2
 
