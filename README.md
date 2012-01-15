@@ -1,16 +1,15 @@
 WordPress Quicklogin
 ====================
 
-Ermoeglicht den schnellen Wechsel zwischen verschiedenen Benutzern.
+ErmÃ¶glicht den schnellen Wechsel zwischen verschiedenen Benutzern.
 
 NUR ZUR ENTWICKELUJNG GEEIGNET! NICHT IM PRODUKTIVUMFELD EINSETZEN!
 
-Das Plugin ermöglicht es im Login-Screen sich mit nur einem Klick unter verschiedenen Benutzernamen (bzw. Benutzer-Profilen) anzumelden.
-Dies ist bei der Entwickelung häufig recht nützlich um Projekte aus verschiedenen Rollen heraus zu testen.
+Das Plugin ermÃ¶glicht es im Login-Screen sich mit nur einem Klick unter verschiedenen Benutzernamen (bzw. Benutzer-Profilen) anzumelden.
+Dies ist bei der Entwickelung hÃ¤ufig recht nÃ¼tzlich um Projekte aus verschiedenen Rollen heraus zu testen.
 
-Das Plugin ist eher rudimentär ausgelegt und erlaubt lediglich eine Einstellung via Konstante im Code. HTML und Optik muss ggf. per Hand im Code angepasst werden.
-Lediglich die Liste der Benutzer kann über den Filter 'quicklogin_users_array' beeinflusst werden. So können in einem Plugin während der Entwickelungsarbeit verschiedene Szenarien
-getestet werden. Der Filter erwartet ein assoziatives Array mit Benutzername -> Passwort.
+Das Plugin ist eher rudimentÃ¤r ausgelegt und erlaubt lediglich eine Einstellung via Konstante im Code. HTML und Optik muss ggf. per Hand im Code angepasst werden.
+Lediglich die Liste der Benutzer kann Ã¼ber den Filter 'quicklogin_users_array' beeinflusst werden. So kÃ¶nnen in einem Plugin wÃ¤hrend der Entwickelungsarbeit verschiedene Szenarien getestet werden. Der Filter erwartet ein assoziatives Array mit Benutzername -> Passwort.
 
 Changelog
 =========
