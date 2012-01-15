@@ -4,17 +4,28 @@
 	border-radius: 3px;
 	border-width: 1px;
 	border-style: solid;
+	border-color: #aaa;
+	
 	margin: 0 0 16px 8px;
 	padding: 12px;
-	background-color: #ffffe0;
-	border-color: #e6db55;
+
+    background-color: #ccc;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#eee));
+	background-image: -webkit-linear-gradient(top, #aaa, #eee);
+	background-image: -moz-linear-gradient(top, #eee, #ccc);
+	background-image: -ms-linear-gradient(top, #eee, #ccc);
+	background-image: -o-linear-gradient(top, #eee, #ccc);
+	background-image: linear-gradient(top, #eee, #ccc);
+
 
 }
 
 #quicklogin h3
 {
-	margin-bottom: 0.5em;
-	color:#333;
+	margin-bottom: 0.75em;
+	font-size: 2em;
+	color:#555;
+	text-shadow: 1px 1px 0px #fff;
 }
 
 #quicklogin.message ul
