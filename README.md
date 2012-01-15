@@ -15,14 +15,19 @@ Changelog
 =========
 
 v0.1.0
+
 Erste Version
+
 	
 v0.1.1
+
 -	Bessere Darstellung durch eigens Stylesheet
 -	Benutzer-Rollen werden neben den Benutzernamen ausgegeben (optional)
 -	Benutzer-Rollen werden neben den Benutzernamen ausgegeben (optional)
 
+
 v0.1.2
+
 -	Vereinfachter Pluginstart
 -	verbessertes Stylesheet (mit Farbverlauf, huuuiiiii!!)
 -	Fehler bei der Ausgabe von Benutzer- und Loginnamen beseitigt
